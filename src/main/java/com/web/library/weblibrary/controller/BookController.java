@@ -2,7 +2,6 @@ package com.web.library.weblibrary.controller;
 
 import com.web.library.weblibrary.beans.Book;
 import com.web.library.weblibrary.proxies.BookProxy;
-import feign.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,8 @@ import java.util.List;
 
 @Controller
 public class BookController {
+
+    // ----- Injections des dépendances ----- //
 
     @Autowired
     private BookProxy bookProxy;

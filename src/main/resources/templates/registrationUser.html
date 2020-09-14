@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:form="http://www.w3.org/1999/html">
+<head>
+
+</head>
+<body>
+    <div id="formulaire">
+        <form:form id="formulaireUser" method="post" action="users" modelAttribute ="user">
+            <table>
+                <tr>
+                    <td><form:label id="firstName" path="firstName">Entrez votre nom</form:label></td>
+                    <td><form:input path="firstName" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td><form:label id="lastName" path="nom">Entrez votre prénom</form:label></td>
+                    <td><form:input path="lastName" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td><form:label id="adress" path="adress">Entrez votre adresse</form:label></td>
+                    <td><form:input path="adress" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td><form:label id="postalCode" path="postalCode">Entrez votre code postale</form:label></td>
+                    <td><form:input path="postalCode" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td><form:label id="city" path="city">Entrez votre ville</form:label></td>
+                    <td><form:input path="city" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td><form:label id="email" path="email">Entrez votre adresse mail</form:label></td>
+                    <td><form:input path="email" required="required" type="email"/></td>
+                </tr>
+
+                <tr>
+                    <td><form:label id="password" path="password">Entrez votre mot de passe</form:label></td>
+                    <td><form:input path="password" required="required" type="password"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </div>
+</body>
+</html>
