@@ -6,6 +6,8 @@ import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,4 +22,7 @@ public interface BookProxy {
 
     @GetMapping(value = "books/{categorie}")
     List<Book> listBooksByCategorie(@PathVariable("categorie") String categorie);
+
+    @PostMapping(value = "Books/search")
+    List<Book> getBookBySearch(@RequestParam(name = "saisie")String saisie);
 }

@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:form="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
 </head>
 <body>
     <div id="formulaire">
-        <form:form id="formulaireUser" method="post" action="users" modelAttribute ="user">
-            <table>
-                <tr>
-                    <td><form:label id="firstName" path="firstName">Entrez votre nom</form:label></td>
-                    <td><form:input path="firstName" required="required"/></td>
-                </tr>
+        <!--/*@thymesVar id="user" type="com.web.library.weblibrary.beans.User"*/-->
+        <form id="formulaireUser" th:action="@{users}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="firstName">Entrez votre prénom</label>
+                    <input th:field="*{firstName}" class="form-control" id="firstName" required="required"/>
+                </div>
 
-                <tr>
-                    <td><form:label id="lastName" path="nom">Entrez votre prénom</form:label></td>
-                    <td><form:input path="lastName" required="required"/></td>
-                </tr>
+                <div class="form-group">
+                    <label for="lastName">Entrez votre nom</label>
+                    <input th:field="*{lastName}" class="form-control" id="lastName" required="required"/>
+                </div>
 
-                <tr>
-                    <td><form:label id="adress" path="adress">Entrez votre adresse</form:label></td>
-                    <td><form:input path="adress" required="required"/></td>
-                </tr>
+                <div class="form-group">
+                    <label for="adress">Entrez votre adresse</label>
+                    <input th:field="*{adress}" class="form-control" id="adress" required="required"/>
+                </div>
 
-                <tr>
-                    <td><form:label id="postalCode" path="postalCode">Entrez votre code postale</form:label></td>
-                    <td><form:input path="postalCode" required="required"/></td>
-                </tr>
+                <div class="form-group">
+                    <label for="postalCode">Entrez votre code postale</label>
+                    <input th:field="*{postalCode}" class="form-control" id="postalCode" required="required"/>
+                </div>
 
-                <tr>
-                    <td><form:label id="city" path="city">Entrez votre ville</form:label></td>
-                    <td><form:input path="city" required="required"/></td>
-                </tr>
+                <div class="form-group">
+                    <label for="city">Entrez votre ville</label>
+                    <input type="text" th:field="*{city}" class="form-control" id="city" required="required"/>
+                </div>
 
-                <tr>
-                    <td><form:label id="email" path="email">Entrez votre adresse mail</form:label></td>
-                    <td><form:input path="email" required="required" type="email"/></td>
-                </tr>
+                <div class="form-group">
+                    <label for="email">Entrez votre email</label>
+                    <input th:field="*{email}" class="form-control" id="email" type="email" required="required"/>
+                </div>
 
-                <tr>
-                    <td><form:label id="password" path="password">Entrez votre mot de passe</form:label></td>
-                    <td><form:input path="password" required="required" type="password"/></td>
-                </tr>
-            </table>
-        </form:form>
+                <div class="form-group">
+                    <label for="password">Entrez votre password</label>
+                    <input th:field="*{password}" class="form-control" id="password" type="password" required="required"/>
+                </div>
+
+                <div id="button">
+                    <button class="btn btn-default" type="submit">Submit</button>
+                </div>
+        </form>
     </div>
 </body>
 </html>

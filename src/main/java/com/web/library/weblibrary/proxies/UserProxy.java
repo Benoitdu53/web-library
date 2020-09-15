@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "library", url = "localhost:8181")
 public interface UserProxy {
 
-    @PostMapping(value = "/createUser")
+    @PostMapping(value = "/users")
     User createUser(@ModelAttribute("user") User user);
 }

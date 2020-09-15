@@ -4,6 +4,7 @@ import com.web.library.weblibrary.beans.User;
 import com.web.library.weblibrary.proxies.UserProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +20,11 @@ public class UserController {
     // ---------- //
 
     @RequestMapping(value = "/authentification", method = RequestMethod.GET)
-    public String authentificationUser(){
+    public ModelAndView authentificationUser(Model model){
 
-        return "registationUser";
+        model.addAttribute("user", new User());
+
+        return new ModelAndView("registrationUser");
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
@@ -29,7 +32,7 @@ public class UserController {
 
         userProxy.createUser(user);
 
-        return "books";
+        return "redirect:/books";
     }
 
 
