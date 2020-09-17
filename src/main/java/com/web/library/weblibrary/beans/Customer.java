@@ -1,6 +1,6 @@
 package com.web.library.weblibrary.beans;
 
-public class User {
+public class Customer {
 
     private Long id;
     private String firstName;
@@ -89,6 +89,6 @@ public class User {
         this.password = password;
     }
 
-    public User() {
+    public Customer() {
     }
 }

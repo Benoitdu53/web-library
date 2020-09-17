@@ -1,7 +1,7 @@
 package com.web.library.weblibrary.controller;
 
-import com.web.library.weblibrary.beans.User;
-import com.web.library.weblibrary.proxies.UserProxy;
+import com.web.library.weblibrary.beans.Customer;
+import com.web.library.weblibrary.proxies.CustomerProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class UserController {
+public class CustomerController {
 
     // ----- Injections des dépendances ----- //
     @Autowired
-    private UserProxy userProxy;
+    private CustomerProxy customerProxy;
 
     // ---------- //
 
     @RequestMapping(value = "/authentification", method = RequestMethod.GET)
     public ModelAndView authentificationUser(Model model){
 
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new Customer());
 
         return new ModelAndView("registrationUser");
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-        public String createUser(@ModelAttribute("user") User user){
+        public String createUser(@ModelAttribute("user") Customer customer){
 
-        userProxy.createUser(user);
+        customerProxy.createUser(customer);
 
         return "redirect:/books";
     }
