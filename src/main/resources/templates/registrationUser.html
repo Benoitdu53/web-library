@@ -3,10 +3,12 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
+    <header th:insert="header.html"/>
 </head>
+
 <body>
     <div id="formulaire">
+
         <!--/*@thymesVar id="customer" type="com.web.library.weblibrary.beans.Customer"*/-->
         <form id="formulaireUser" th:action="@{users}" th:object="${customer}" method="post">
                 <div class="form-group">
@@ -42,6 +44,14 @@
                 <div class="form-group">
                     <label for="password">Entrez votre password</label>
                     <input th:field="*{password}" class="form-control" id="password" type="password" required="required"/>
+                </div>
+
+                <div class="form-group">
+                    <label id="confirmPassword" path="confirmPassword">Entrez votre password</label>
+                    <input name="confirmPassword" type="password" required="required"/>
+<!--                    <tr th:each="erreurMessages : ${erreurMessages}">-->
+<!--                        <span class="erreur" th:text="${erreurMessages.get('')}"><</span>-->
+<!--                    </tr>-->
                 </div>
 
                 <div id="button">

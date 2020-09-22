@@ -2,13 +2,11 @@
 <head>
     <title>Library</title>
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+    <header th:insert="search.html"/>
+    <header th:insert="header.html"/>
 </head>
 <body>
-    <header th:insert="search.html"/>
-
 <div class="container">
-
-    <h1>Library</h1>
 
     <div class="row">
         <div th:each="books : ${books}" class="col-md-4 my-1">

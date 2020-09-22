@@ -21,6 +21,11 @@ public class BookController {
     @Autowired
     private BookProxy bookProxy;
 
+    /**
+     * Affiche tout les livres
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/books",method = RequestMethod.GET)
     public String getBooks(Model model){
 
@@ -31,6 +36,12 @@ public class BookController {
         return "books";
     }
 
+    /**
+     * Affie les livres par catégorie
+     * @param model
+     * @param categorie
+     * @return
+     */
     @RequestMapping(value = "/books/{categorie}",method = RequestMethod.GET)
     public String getBookByCategorie(Model model,
                                      @PathVariable("categorie") String categorie){
@@ -42,6 +53,12 @@ public class BookController {
         return "books";
     }
 
+    /**
+     * Affice les livres selon la saisie de l'utilisateur dans la barre de recherche
+     * @param saisie
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/books/search", method = RequestMethod.POST)
     public String getBooksBySearch(@RequestParam(name = "saisie", defaultValue = "", required = false) String saisie,
                                    Model model){

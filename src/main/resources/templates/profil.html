@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+    <header th:insert="header.html"/>
+</head>
+
+
+<body>
+<!--    On affiche le profil ( paramètre utilisateur, prêt en cours, etc...)-->
+<div class="container">
+    <div class="row">
+        <div th:each="customer : ${session.get('customer')}">
+            <div class="col">
+                <p th:text="${customer.firstName}"></p>
+                <p th:text="${customer.lastName}"></p>
+                <p th:text="${customer.email}"></p>
+            </div>
+
+            <div class="col">
+                <p th:text="${customer.adress}"></p>
+                <p th:text="${customer.postalCode}"></p>
+                <p th:text="${customer.city}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+<!--        On affiche les prêt en cours-->
+
+    </div>
+
+</div>
+
+</body>
+</html>
