@@ -67,4 +67,13 @@ public class BookController {
 
         return "/books";
     }
+
+    @RequestMapping(value = "/book/{idBook}", method = RequestMethod.GET)
+    public String getBookById(@PathVariable("idBook") Long idBook,
+                              Model model){
+
+        model.addAttribute("book",bookProxy.getBookById(idBook));
+
+        return "/book";
+    }
 }

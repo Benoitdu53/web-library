@@ -1,6 +1,7 @@
 package com.web.library.weblibrary.beans;
 
 import java.util.Date;
+import java.util.List;
 
 public class Book {
 
@@ -11,6 +12,8 @@ public class Book {
     private String synopsis;
     // TODO image à traiter
     private String cover;
+    private Author author;
+    private List<Copy> copyList;
 
     @Override
     public String toString() {
@@ -21,7 +24,25 @@ public class Book {
                 ", page=" + page +
                 ", synopsis='" + synopsis + '\'' +
                 ", cover='" + cover + '\'' +
+                ", author=" + author +
+                ", copyList=" + copyList +
                 '}';
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(final Author author) {
+        this.author = author;
+    }
+
+    public List<Copy> getCopyList() {
+        return copyList;
+    }
+
+    public void setCopyList(final List<Copy> copyList) {
+        this.copyList = copyList;
     }
 
     public Book() {

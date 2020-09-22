@@ -20,9 +20,9 @@ public interface BookProxy {
     @GetMapping(value = "/book/{id}")
     Book getBookById(@PathVariable("id") Long id);
 
-    @GetMapping(value = "books/{categorie}")
+    @GetMapping(value = "/books/{categorie}")
     List<Book> listBooksByCategorie(@PathVariable("categorie") String categorie);
 
-    @PostMapping(value = "books/search")
+    @PostMapping(value = "/books/search")
     List<Book> getBookBySearch(@RequestParam(name = "saisie")String saisie);
 }

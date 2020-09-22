@@ -7,14 +7,13 @@
 </head>
 <body>
 <div class="container">
-
+<!--On affiche les livres avec le titre, l'auteur, la date de parution, le nombre et lieu d'exmplaire disponible
+    ainsi que son image de couverture-->
     <div class="row">
         <div th:each="books : ${books}" class="col-md-4 my-1">
-<!--            <a th:href="@{|/details-produit/${books.title}|}" >-->
-<!--                <img th:src="${produit.image}"  class="card-img-top" />-->
-                <p th:text= "${books.title}"></p>
-                <p th:text= "${books.synopsis}"></p>
-            </a>
+            <a class="nav-link" th:href="@{'/book/'+${books.id}}"><p th:text= "${books.title}"></p></a>
+            <p th:text="${books.author.lastName}"></p>
+            <p th:text="${books.author.firstName}"></p>
         </div>
     </div>
 
