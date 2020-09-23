@@ -11,7 +11,7 @@
     <div id="row">
         <div class="col-md-4 my-1">
             <form id="formulaireCategorie" th:action="@{/books/categorie}" method="post">
-                <select th:field="*{categorie}">
+                <select id="categorie" name="categorie">
                     <option value="">--</option>
                     <option th:each="categorie : ${categorie}" th:value="${categorie.label}"
                             th:text="${categorie.label}"/>

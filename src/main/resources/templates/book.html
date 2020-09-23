@@ -18,11 +18,11 @@
             <p th:text= "${book.synopsis}"></p>
         </div>
 
-<!--        <div th:each="copy : ${copy}" class="col-md-4 my-2">-->
-<!--            <p th:text= "${copy.format}"></p>-->
-<!--            <p th:text= "${copy.numberCopy}"></p>-->
-<!--            <p th:text= "${copy.library.nom}"></p>-->
-<!--        </div>-->
+        <div th:each="copy : ${copy}" class="col-md-4 my-2">
+            <p th:text= "${copy.format}"></p>
+            <p th:text= "${copy.numberCopy}"></p>
+            <p th:text= "${copy.library.nom}"></p>
+        </div>
     </div>
 
 </div>
