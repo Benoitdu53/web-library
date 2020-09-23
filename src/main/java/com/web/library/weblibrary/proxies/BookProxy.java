@@ -1,8 +1,6 @@
 package com.web.library.weblibrary.proxies;
 
-
 import com.web.library.weblibrary.beans.Book;
-import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +18,8 @@ public interface BookProxy {
     @GetMapping(value = "/book/{id}")
     Book getBookById(@PathVariable("id") Long id);
 
-    @GetMapping(value = "/books/{categorie}")
-    List<Book> listBooksByCategorie(@PathVariable("categorie") String categorie);
+    @PostMapping(value = "/books/categorie")
+    List<Book> listBooksByCategorie(@RequestParam("categorie") String categorie);
 
     @PostMapping(value = "/books/search")
     List<Book> getBookBySearch(@RequestParam(name = "saisie")String saisie);

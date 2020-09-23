@@ -2,6 +2,8 @@ package com.web.library.weblibrary.controller;
 
 import com.web.library.weblibrary.beans.Book;
 import com.web.library.weblibrary.proxies.BookProxy;
+import com.web.library.weblibrary.proxies.CategorieProxy;
+import com.web.library.weblibrary.proxies.CopyProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,14 @@ public class BookController {
     @Autowired
     private BookProxy bookProxy;
 
+    @Autowired
+    private CopyProxy copyProxy;
+
+    @Autowired
+    private CategorieProxy categorieProxy;
+
+    // ----- ----- //
+
     /**
      * Affiche tout les livres
      * @param model
@@ -32,6 +42,7 @@ public class BookController {
         List<Book> books = bookProxy.listBooks();
 
         model.addAttribute("books", books);
+        model.addAttribute("categorie", categorieProxy.getCategorie());
 
         return "books";
     }
@@ -42,13 +53,14 @@ public class BookController {
      * @param categorie
      * @return
      */
-    @RequestMapping(value = "/books/{categorie}",method = RequestMethod.GET)
+    @RequestMapping(value = "/books/categorie",method = RequestMethod.POST)
     public String getBookByCategorie(Model model,
-                                     @PathVariable("categorie") String categorie){
+                                     @RequestParam(name="categorie", defaultValue = "", required = false) String categorie){
 
         List<Book> books = bookProxy.listBooksByCategorie(categorie);
 
         model.addAttribute("books", books);
+        model.addAttribute("categorie",categorieProxy.getCategorie());
 
         return "books";
     }
@@ -73,6 +85,7 @@ public class BookController {
                               Model model){
 
         model.addAttribute("book",bookProxy.getBookById(idBook));
+        model.addAttribute("copy",copyProxy.getCopyById(idBook));
 
         return "/book";
     }

@@ -52,6 +52,7 @@
                                 <li class="nav-item"><a class="nav-link" th:href="@{/books}">Tout les
                                     books</a></li>
                                 <li class="nav-item"><a class="nav-link" th:href="@{'/profil/'+ ${session.customer.id}}">Mon profil</a></li>
+                                <li class="nav-item"><a class="nav-link" th:href="@{'/emprunt/'+ ${session.customer.id}}">Mon prêt</a></li>
                                 <li class="nav-item"><a class="nav-link" th:href="@{/disconnect}">Se
                                     déconnecter</a></li>
                             </ul>

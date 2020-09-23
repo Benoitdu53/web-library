@@ -12,10 +12,11 @@
     <div class="row">
         <!--        On affiche les prêt en cours-->
         <div th:each="emprunt : ${emprunt}">
-            <p th:text="${emprunt.id}"></p>
             <p th:text="${emprunt.empruntDate}"></p>
             <p th:text="${emprunt.returnDate}"></p>
             <p th:text="${emprunt.extended}"></p>
+            <p th:text="${emprunt.copy.book.title}"></p>
+            <p th:text="${emprunt.copy.book.author.firstName}"></p>
         </div>
 
     </div>

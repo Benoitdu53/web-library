@@ -10,16 +10,19 @@
 <div class="container">
     <!--On affiche les livres avec le titre, nombre de pages, l'auteur et l'image de couverture-->
     <div class="row">
-        <div th:each="book : ${book}" class="col-md-4 my-">
+        <div th:each="book : ${book}" class="col-md-4 my-2">
             <!--            <a th:href="@{|/details-produit/${books.title}|}" >-->
             <!--                <img th:src="${produit.image}"  class="card-img-top" />-->
             <p th:text= "${book.title}"></p>
             <p th:text= "${book.pubDate}"></p>
             <p th:text= "${book.synopsis}"></p>
-            <p th:text= "${book.copyList.format}"></p>
-            <p th:text= "${book.synopsis}"></p>
-            </a>
         </div>
+
+<!--        <div th:each="copy : ${copy}" class="col-md-4 my-2">-->
+<!--            <p th:text= "${copy.format}"></p>-->
+<!--            <p th:text= "${copy.numberCopy}"></p>-->
+<!--            <p th:text= "${copy.library.nom}"></p>-->
+<!--        </div>-->
     </div>
 
 </div>

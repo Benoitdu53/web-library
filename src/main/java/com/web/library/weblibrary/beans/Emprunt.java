@@ -8,6 +8,8 @@ public class Emprunt {
     private Date empruntDate;
     private Date returnDate;
     private Boolean isExtended;
+    private Copy copy;
+    private Customer customer;
 
     @Override
     public String toString() {
@@ -16,10 +18,28 @@ public class Emprunt {
                 ", empruntDate=" + empruntDate +
                 ", returnDate=" + returnDate +
                 ", isExtended=" + isExtended +
+                ", copy=" + copy +
+                ", customer=" + customer +
                 '}';
     }
 
     public Emprunt() {
+    }
+
+    public Copy getCopy() {
+        return copy;
+    }
+
+    public void setCopy(final Copy copy) {
+        this.copy = copy;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(final Customer customer) {
+        this.customer = customer;
     }
 
     public Long getId() {

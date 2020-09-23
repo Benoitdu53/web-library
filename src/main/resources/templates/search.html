@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <div id="search">
+    <div id="searchSaisie">
         <form id="formulairesaisie" th:action="@{/books/search}" method="post">
             <label for="saisie">Saisir un auteur ou un titre de livre</label>
             <input id="saisie" type="text" name="saisie">
@@ -14,5 +14,6 @@
             <input class="ui-button" type="submit" value="Rechercher">
         </form>
     </div>
+
 </body>
 </html>

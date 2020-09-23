@@ -3,14 +3,29 @@ package com.web.library.weblibrary.beans;
 public class Copy {
 
     private Long id;
-    private int number;
+    private String format;
+    private String status;
+    private Library library;
 
     @Override
     public String toString() {
         return "Copy{" +
                 "id=" + id +
-                ", number=" + number +
+                ", format='" + format + '\'' +
+                ", status='" + status + '\'' +
+                ", library=" + library +
                 '}';
+    }
+
+    public Copy() {
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(final String status) {
+        this.status = status;
     }
 
     public Long getId() {
@@ -21,14 +36,19 @@ public class Copy {
         this.id = id;
     }
 
-    public int getNumber() {
-        return number;
+    public String getFormat() {
+        return format;
     }
 
-    public void setNumber(final int number) {
-        this.number = number;
+    public void setFormat(final String format) {
+        this.format = format;
     }
 
-    public Copy() {
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(final Library library) {
+        this.library = library;
     }
 }

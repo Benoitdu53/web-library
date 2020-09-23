@@ -1,17 +1,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Library</title>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
     <header th:insert="search.html"/>
     <header th:insert="header.html"/>
 </head>
 <body>
 <div class="container">
-<!--On affiche les livres avec le titre, l'auteur, la date de parution, le nombre et lieu d'exmplaire disponible
-    ainsi que son image de couverture-->
+
+    <div id="row">
+        <div class="col-md-4 my-1">
+            <form id="formulaireCategorie" th:action="@{/books/categorie}" method="post">
+                <select th:field="*{categorie}">
+                    <option value="">--</option>
+                    <option th:each="categorie : ${categorie}" th:value="${categorie.label}"
+                            th:text="${categorie.label}"/>
+                </select>
+                <input class="ui-button" type="submit" value="Rechercher">
+            </form>
+        </div>
+    </div>
+
+    <!--On affiche les livres avec le titre, l'auteur, la date de parution, le nombre et lieu d'exmplaire disponible
+        ainsi que son image de couverture-->
     <div class="row">
         <div th:each="books : ${books}" class="col-md-4 my-1">
-            <a class="nav-link" th:href="@{'/book/'+${books.id}}"><p th:text= "${books.title}"></p></a>
+            <a class="nav-link" th:href="@{'/book/'+${books.id}}"><p th:text="${books.title}"></p></a>
             <p th:text="${books.author.lastName}"></p>
             <p th:text="${books.author.firstName}"></p>
         </div>
