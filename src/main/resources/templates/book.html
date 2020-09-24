@@ -22,7 +22,14 @@
             <p th:text= "${copy.format}"></p>
             <p th:text= "${copy.numberCopy}"></p>
             <p th:text= "${copy.library.nom}"></p>
+            <form id="formulaireEmprunt" th:action="@{/emprunt/add}" method="post">
+                <input type="hidden" th:field="{copy.format}" name="format">
+                <input type="hidden" th:field="{copy.numberCopy}" name="numberCopy">
+                <input type="hidden" th:field="{copy.library.nom}" name="nameLibrary">
+                <input class="ui-button" type="submit" value="Emprunter">
+            </form>
         </div>
+
     </div>
 
 </div>

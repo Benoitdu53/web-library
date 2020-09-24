@@ -56,6 +56,10 @@ public class BookController {
     public String getBookByCategorie(Model model,
                                      @RequestParam(name="categorie", defaultValue = "", required = false) String categorie){
 
+        if (categorie.equals("")){
+            return "redirect:/books";
+        }
+
         List<Book> books = bookProxy.listBooksByCategorie(categorie);
 
         model.addAttribute("books", books);
