@@ -3,10 +3,7 @@ package com.web.library.weblibrary.proxies;
 import com.web.library.weblibrary.beans.Customer;
 import com.web.library.weblibrary.beans.Emprunt;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +15,5 @@ public interface EmpruntProxy {
 
     // Rajouter un prêt
     @PostMapping(value = "/emprunt/add")
-    Emprunt createEmprunt (String format, String nameLibrary, Customer customer);
+    Emprunt createEmprunt ( @RequestParam String format, @RequestParam String nameLibrary, Customer customer);
 }

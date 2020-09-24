@@ -19,15 +19,9 @@
         </div>
 
         <div th:each="copy : ${copy}" class="col-md-4 my-2">
-            <p th:text= "${copy.format}"></p>
-            <p th:text= "${copy.numberCopy}"></p>
-            <p th:text= "${copy.library.nom}"></p>
-            <form id="formulaireEmprunt" th:action="@{/emprunt/add}" method="post">
-                <input type="hidden" th:field="{copy.format}" name="format">
-                <input type="hidden" th:field="{copy.numberCopy}" name="numberCopy">
-                <input type="hidden" th:field="{copy.library.nom}" name="nameLibrary">
-                <input class="ui-button" type="submit" value="Emprunter">
-            </form>
+            <span th:text= "${copy.format}"></span>
+            <span th:text= "${copy.numberCopy}"> exemplaire(s)</span>
+            <span th:text= "${copy.library.nom}"></span>
         </div>
 
     </div>

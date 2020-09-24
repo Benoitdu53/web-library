@@ -44,17 +44,26 @@ public class EmpruntController {
         return "emprunts";
     }
 
+    /**
+     * Ajouter un prêt
+     * @param httpSession
+     * @param format
+     * @param nameLibrary
+     * @param customer
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/emprunt/add", method = RequestMethod.POST)
     public String empruntCopy(HttpSession httpSession,
                               @RequestParam(value = "format", required = false) String format,
                               @RequestParam(value = "nameLibrary", required = false) String nameLibrary,
-                              @SessionAttribute("session") Customer customer,
+                              @RequestParam@SessionAttribute("session") Customer customer,
                               Model model){
 
-        Emprunt emprunt = empruntProxy.createEmprunt(format, nameLibrary, customer);
+       empruntProxy.createEmprunt( format, nameLibrary, customer);
 
        model.addAttribute("emprunt", empruntProxy.listEmpruntByCustomer(customer.getId()));
 
-        return "emprunts";
+        return "redirect:/emprunts";
     }
 }
