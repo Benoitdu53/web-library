@@ -39,30 +39,17 @@ public class EmpruntController {
 
         List<Emprunt> emprunts = empruntProxy.listEmpruntByCustomer(idSession);
 
+
         model.addAttribute("emprunt",emprunts);
 
         return "emprunts";
     }
 
-    /**
-     * Ajouter un prêt
-     * @param httpSession
-     * @param format
-     * @param nameLibrary
-     * @param customer
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/emprunt/add", method = RequestMethod.POST)
-    public String empruntCopy(HttpSession httpSession,
-                              @RequestParam(value = "format", required = false) String format,
-                              @RequestParam(value = "nameLibrary", required = false) String nameLibrary,
-                              @RequestParam@SessionAttribute("session") Customer customer,
-                              Model model){
+    @RequestMapping(value = "/emprunt/extended/{idEmprunt}", method = RequestMethod.POST)
+    public String extendEmprunt(HttpSession httpSession,
+                                @PathVariable("id") Long idEmprunt){
 
-       empruntProxy.createEmprunt( format, nameLibrary, customer);
-
-       model.addAttribute("emprunt", empruntProxy.listEmpruntByCustomer(customer.getId()));
+    //TODO Prolongation de prêt
 
         return "redirect:/emprunts";
     }

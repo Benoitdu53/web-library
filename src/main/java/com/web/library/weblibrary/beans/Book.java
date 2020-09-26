@@ -13,39 +13,17 @@ public class Book {
     // TODO image à traiter
     private String cover;
     private Author author;
-    private List<Copy> copyList;
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", pubDate=" + pubDate +
-                ", page=" + page +
-                ", synopsis='" + synopsis + '\'' +
-                ", cover='" + cover + '\'' +
-                ", author=" + author +
-                ", copyList=" + copyList +
-                '}';
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(final Author author) {
-        this.author = author;
-    }
-
-    public List<Copy> getCopyList() {
-        return copyList;
-    }
-
-    public void setCopyList(final List<Copy> copyList) {
-        this.copyList = copyList;
-    }
+    private Categorie categorie;
 
     public Book() {
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(final Categorie categorie) {
+        this.categorie = categorie;
     }
 
     public Long getId() {
@@ -94,5 +72,13 @@ public class Book {
 
     public void setCover(final String cover) {
         this.cover = cover;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(final Author author) {
+        this.author = author;
     }
 }

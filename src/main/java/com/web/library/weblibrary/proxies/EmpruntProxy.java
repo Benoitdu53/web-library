@@ -13,7 +13,4 @@ public interface EmpruntProxy {
     @GetMapping(value = "/emprunts/{id}")
     List<Emprunt> listEmpruntByCustomer(@PathVariable("id") Long id);
 
-    // Rajouter un prêt
-    @PostMapping(value = "/emprunt/add")
-    Emprunt createEmprunt ( @RequestParam String format, @RequestParam String nameLibrary, Customer customer);
 }

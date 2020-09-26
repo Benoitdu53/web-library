@@ -5,6 +5,7 @@ public class Copy {
     private Long id;
     private String format;
     private String status;
+    private Book book;
     private Library library;
 
     @Override
@@ -13,8 +14,17 @@ public class Copy {
                 "id=" + id +
                 ", format='" + format + '\'' +
                 ", status='" + status + '\'' +
+                ", book=" + book +
                 ", library=" + library +
                 '}';
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(final Book book) {
+        this.book = book;
     }
 
     public Copy() {

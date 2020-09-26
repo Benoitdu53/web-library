@@ -16,6 +16,6 @@ public interface CustomerProxy {
     @PostMapping(value = "/users")
     Customer createCustomer(@ModelAttribute("user") Customer customer);
 
-    @PostMapping(value = "/validationAuthencation")
+    @PostMapping(value = "/validationAuthentication")
     Customer validationAuthentication(@ModelAttribute("authentication") AuthenticationCustomer authenticationCustomer);
 }

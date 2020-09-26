@@ -9,16 +9,31 @@
 <!--    On affiche le profil ( paramètre utilisateur, prêt en cours, etc...)-->
 <div class="container">
 
-    <div class="row">
-        <!--        On affiche les prêt en cours-->
-        <div th:each="emprunt : ${emprunt}">
-            <p th:text="${emprunt.empruntDate}"></p>
-            <p th:text="${emprunt.returnDate}"></p>
-            <p th:text="${emprunt.extended}"></p>
-<!--            <p th:text="${emprunt.copy.book.title}"></p>-->
-<!--            <p th:text="${emprunt.copy.book.author.firstName}"></p>-->
+    <div class="row justify-content-center">
+        <div class="col">
+            <table border="1" class="emprunt">
+                <!--        On affiche les prêt en cours-->
+                <tr>
+                    <th>Nom du livre</th>
+                    <th>Date de début du prêt </th>
+                    <th>Date de retour du prêt prévue </th>
+                    <th>Bibliothèque de prêt </th>
+                    <th>Prolongation du prêt effectuée ? </th>
+                </tr>
+                <div th:each="emprunt : ${emprunt}">
+                    <tr>
+                        <!--/*@thymesVar id="book" type="com.web.library.weblibrary.beans.Emprunt"*/-->
+                        <td th:text="${emprunt.copy.book.title}"></td>
+                        <td th:text="${emprunt.empruntDate}"></td>
+                        <td th:text="${emprunt.returnDate}"></td>
+                        <td th:text="${emprunt.copy.library.nom}"></td>
+                        <td th:text="${emprunt.extended == false ? 'Non' : 'Oui'}"></td>
+<!--                        Prolongation possible si isExtended est false-->
+                        <td th:if="${emprunt.extended == false}" th:href="@{'/emprunt/extended/'+${emprunt.id}}" th:text="Prolonger le prêt"></td>
+                    </tr>
+                </div>
+            </table>
         </div>
-
     </div>
 
 </div>
