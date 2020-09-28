@@ -27,6 +27,7 @@ public class EmpruntController {
 
     /**
      * Affiche les prêts de l'utilisateur
+     *
      * @param httpSession
      * @param idSession
      * @param model
@@ -34,23 +35,22 @@ public class EmpruntController {
      */
     @RequestMapping(value = "/emprunt/{idSession}", method = RequestMethod.GET)
     public String displayEmprunt(HttpSession httpSession,
-                                 @PathVariable("idSession")Long idSession,
-                                 Model model){
+                                 @PathVariable("idSession") Long idSession,
+                                 Model model) {
 
         List<Emprunt> emprunts = empruntProxy.listEmpruntByCustomer(idSession);
 
-
-        model.addAttribute("emprunt",emprunts);
+        model.addAttribute("emprunt", emprunts);
 
         return "emprunts";
     }
 
-    @RequestMapping(value = "/emprunt/extended/{idEmprunt}", method = RequestMethod.POST)
+    @RequestMapping(value = "/emprunt/extended/{idEmprunt}", method = RequestMethod.GET)
     public String extendEmprunt(HttpSession httpSession,
-                                @PathVariable("id") Long idEmprunt){
+                                @PathVariable("idEmprunt") Long idEmprunt) {
 
-    //TODO Prolongation de prêt
+        empruntProxy.ExtendLoan(idEmprunt);
 
-        return "redirect:/emprunts";
+        return "redirect:/books";
     }
 }

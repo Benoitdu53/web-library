@@ -29,7 +29,7 @@
                         <td th:text="${emprunt.copy.library.nom}"></td>
                         <td th:text="${emprunt.extended == false ? 'Non' : 'Oui'}"></td>
 <!--                        Prolongation possible si isExtended est false-->
-                        <td th:if="${emprunt.extended == false}" th:href="@{'/emprunt/extended/'+${emprunt.id}}" th:text="Prolonger le prêt"></td>
+                        <td th:if="${emprunt.extended == false}"><a th:href="@{'/emprunt/extended/'+${emprunt.id}}">Prolonger le prêt</a></td>
                     </tr>
                 </div>
             </table>

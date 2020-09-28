@@ -13,4 +13,6 @@ public interface EmpruntProxy {
     @GetMapping(value = "/emprunts/{id}")
     List<Emprunt> listEmpruntByCustomer(@PathVariable("id") Long id);
 
+    @GetMapping(value = "/emprunt/extended/{idEmprunt}")
+    void ExtendLoan (@PathVariable("idEmprunt") Long idEmprunt);
 }
