@@ -10,17 +10,24 @@
 <div class="container">
     <div class="row">
         <div th:each="customer : ${session.get('customer')}">
-            <div class="col">
-                <p th:text="${customer.firstName}"></p>
-                <p th:text="${customer.lastName}"></p>
-                <p th:text="${customer.email}"></p>
+            <div class="col-md-6">
+                <div class="label">Prénom : <span th:text="${customer.firstName}"></span></div>
+                <div class="label">Nom : <span th:text="${customer.lastName}"></span></div>
+                <div class="label">Adresse mail : <span th:text="${customer.email}"></span></div>
             </div>
 
-            <div class="col">
-                <p th:text="${customer.adress}"></p>
-                <p th:text="${customer.postalCode}"></p>
-                <p th:text="${customer.city}"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="label">adresse : <span th:text="${customer.adress}"></span></div>
+                    <div class="label">Code postale : <span th:text="${customer.postalCode}"></span></div>
+                    <div class="label">Ville : <span th:text="${customer.city}"></span></div>
+                </div>
             </div>
+
+            <button class="ui-button"><a th:href="@{'/updatePassword/'+${customer.id}}">Modifier mon mot de passe</a></button>
+
+            <button class="ui-button"><a th:href="@{'/updateCustomer/'+${customer.id}}">Modifier mon profil</a></button>
+
         </div>
     </div>
 

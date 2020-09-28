@@ -2,10 +2,9 @@ package com.web.library.weblibrary.proxies;
 
 import com.web.library.weblibrary.beans.AuthenticationCustomer;
 import com.web.library.weblibrary.beans.Customer;
+import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "library", url = "localhost:8181")
 public interface CustomerProxy {
@@ -18,4 +17,14 @@ public interface CustomerProxy {
 
     @PostMapping(value = "/validationAuthentication")
     Customer validationAuthentication(@ModelAttribute("authentication") AuthenticationCustomer authenticationCustomer);
+
+    @GetMapping(value = "/user/{idCustomer}")
+    Customer getCustomerById(@PathVariable("idCustomer") Long idCustomer);
+
+    @PostMapping(value = "/updateCustomer")
+    Customer updateCustomer(@ModelAttribute("customer") Customer customer);
+
+    @PostMapping(value = "/updatePassword")
+    void updatePassword(@RequestParam(name = "idCustomer") Long idCustomer,
+                        @RequestParam(name = "password") String password);
 }

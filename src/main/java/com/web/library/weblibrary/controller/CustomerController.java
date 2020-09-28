@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -106,4 +107,87 @@ public class CustomerController {
         return "profil";
     }
 
+    /**
+     * Affiche la page de modification du profil
+     * @param idCustomer
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/updateCustomer/{idCustomer}",method = RequestMethod.GET)
+    public String dsiplayUpdateCustomer(@PathVariable("idCustomer") Long idCustomer,
+                                 Model model){
+
+        model.addAttribute("customer", customerProxy.getCustomerById(idCustomer));
+
+        return "updateCustomer";
+    }
+
+    /**
+     * Modifie le profil de l'utilisateur
+     * @param customer
+     * @return
+     */
+    @RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
+    public String updateCustomer(@ModelAttribute("customer") Customer customer,
+                                 HttpSession httpSession,
+                                 Model model){
+
+        customerProxy.updateCustomer(customer);
+        httpSession.setAttribute("customer", customer);
+        model.addAttribute(httpSession.getAttribute("customer"));
+
+        return "profil";
+    }
+
+    /**
+     * On affiche la page de modification de mot de passe
+     * @param idCustomer
+     * @return
+     */
+    @RequestMapping(value = "/updatePassword/{idCustomer}", method = RequestMethod.GET)
+    public String updatePassword(@PathVariable("idCustomer") Long idCustomer,
+                                 HttpSession httpSession,
+                                 Model model){
+
+        customerProxy.getCustomerById(idCustomer);
+
+        model.addAttribute("customer", customerProxy.getCustomerById(idCustomer));
+
+        return "updatePassword";
+    }
+
+
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
+    public String updatePassword(@RequestParam(name = "password") String password,
+                                 @RequestParam(name = "idCustomer") Long idCustomer,
+                                 @RequestParam(name = "confirmPassword") String confirmPassword,
+                                 HttpSession httpSession,
+                                 Model model){
+
+        model.addAttribute("customer", customerProxy.getCustomerById(idCustomer));
+
+        if (!password.equals(confirmPassword)){
+            model.addAttribute("erreur", "Les mots de passe ne sont pas identiques");
+            model.addAttribute("customer", customerProxy.getCustomerById(idCustomer));
+            return "updatePassword";
+        }
+
+        customerProxy.updatePassword(idCustomer, password);
+
+
+        return "/profil";
+    }
+
+    /**
+     * Déconnexion de l'utilisateur
+     * @param httpSession
+     * @return
+     */
+    @RequestMapping(value = "/disconnect", method = RequestMethod.GET)
+    public Object disconnect(HttpSession httpSession ){
+
+        httpSession.invalidate();
+
+        return new RedirectView("books");
+    }
 }
