@@ -13,8 +13,8 @@
             <!--/*@thymesVar id="authenticationCustomer" type="com.web.library.weblibrary.beans.AuthenticationCustomer"*/-->
             <form id="formulaireUser" th:action="@{authentication}" th:object="${authenticationCustomer}" method="post">
                 <div class="form-group">
-                    <label for="email">Entrez votre adresse mail</label>
-                    <input th:field="*{email}" class="form-control" id="email" required="required"/>
+                    <label for="usename">Entrez votre adresse mail</label>
+                    <input th:field="*{username}" class="form-control" id="usename" required="required"/>
                 </div>
 
                 <div class="form-group">
@@ -24,7 +24,7 @@
                 </div>
 
                 <div id="button">
-                    <input class="btn btn-default" type="submit">Login</input>
+                    <input class="btn btn-default" type="submit" value="Se connecter"/>
                 </div>
             </form>
         </div>

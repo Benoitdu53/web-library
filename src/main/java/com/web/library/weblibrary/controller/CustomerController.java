@@ -2,16 +2,19 @@ package com.web.library.weblibrary.controller;
 
 import com.web.library.weblibrary.beans.AuthenticationCustomer;
 import com.web.library.weblibrary.beans.Customer;
-import com.web.library.weblibrary.beans.ValidRegistration;
 import com.web.library.weblibrary.proxies.CustomerProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Map;
 
 @Controller
@@ -84,10 +87,17 @@ public class CustomerController {
      */
     @RequestMapping(value = "/authentication", method = RequestMethod.POST)
     public String authenticationCustomer(@ModelAttribute("authenticationCustomer")AuthenticationCustomer authenticationCustomer,
-                                         HttpSession httpSession){
+                                         HttpSession httpSession,
+                                         HttpServletResponse response){
 
-        Customer customer = customerProxy.validationAuthentication(authenticationCustomer);
+        ResponseEntity<?> responseEntity = customerProxy.validationAuthentication(authenticationCustomer);
 
+        Cookie cookie = new Cookie("Token", ((Map<String, String>) responseEntity.getBody()).get("token"));
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(3600);
+        response.addCookie(cookie);
+
+        Customer customer = customerProxy.getCustomerByEmail(authenticationCustomer.getUsername());
         httpSession.setAttribute("customer", customer);
 
         return "redirect:/books";
@@ -156,7 +166,15 @@ public class CustomerController {
         return "updatePassword";
     }
 
-
+    /**
+     * Modifie le mot de passe de l'utilisateur
+     * @param password
+     * @param idCustomer
+     * @param confirmPassword
+     * @param httpSession
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
     public String updatePassword(@RequestParam(name = "password") String password,
                                  @RequestParam(name = "idCustomer") Long idCustomer,
@@ -184,10 +202,20 @@ public class CustomerController {
      * @return
      */
     @RequestMapping(value = "/disconnect", method = RequestMethod.GET)
-    public Object disconnect(HttpSession httpSession ){
+    public void disconnect(HttpSession httpSession,
+                             HttpServletResponse response){
 
+        httpSession.removeAttribute("customer");
         httpSession.invalidate();
 
-        return new RedirectView("books");
+        Cookie cookie = new Cookie("Token", null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        try {
+            response.sendRedirect("/books");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
