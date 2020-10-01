@@ -1,0 +1,13 @@
+/* Main image */
+#main-image{
+    background: url("img/bibliotheque.jpg");
+    background-size: cover;
+}
+
+body{
+    color: red;
+}
+
+h2{
+    font-size: 250px;
+}

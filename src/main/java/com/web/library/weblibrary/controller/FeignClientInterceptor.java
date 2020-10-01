@@ -22,9 +22,7 @@ public class FeignClientInterceptor implements RequestInterceptor {
             return;
         }
         HttpServletRequest request = requestAttributes.getRequest();
-        if (request == null) {
-            return;
-        }
+
         Cookie[] cookies = request.getCookies();
         for (final Cookie cookie : cookies) {
             if(cookie.getName().equals("Token")){

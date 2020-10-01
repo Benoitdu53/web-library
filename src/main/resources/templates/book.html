@@ -1,9 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Library</title>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
-    <script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
-    <header th:insert="search.html"/>
     <header th:insert="header.html"/>
 </head>
 <body>
@@ -11,8 +7,6 @@
     <!--On affiche les livres avec le titre, nombre de pages, l'auteur et l'image de couverture-->
     <div class="row">
         <div th:each="book : ${book}" class="col-md-6">
-            <!--            <a th:href="@{|/details-produit/${books.title}|}" >-->
-            <!--                <img th:src="${produit.image}"  class="card-img-top" />-->
             <p th:text= "${book.title}"></p>
             <p th:text= "${book.pubDate}"></p>
             <p th:text= "${book.synopsis}"></p>

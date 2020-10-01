@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
@@ -52,7 +50,12 @@ public class SessionFilter implements Filter {
                 }
             }
             // Si Pas de token ni JSessionID -> Oriente sur books
-            if (request.getServletPath().equals("/books") || request.getServletPath().equals("/authentication") || request.getServletPath().equals("/registration")){
+            if ( request.getServletPath().startsWith("/authenticate") ||
+                    request.getServletPath().startsWith("/book") ||
+                    request.getServletPath().startsWith("/books") ||
+                    request.getServletPath().equals("/authentication") ||
+                    request.getServletPath().equals("/users") ||
+                    request.getServletPath().equals("/registration")){
                 chain.doFilter(request, response);
                 return;
             }

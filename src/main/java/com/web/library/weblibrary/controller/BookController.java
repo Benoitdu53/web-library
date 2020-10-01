@@ -79,6 +79,7 @@ public class BookController {
                                    Model model){
 
         model.addAttribute("books", bookProxy.getBookBySearch(saisie));
+        model.addAttribute("categorie", categorieProxy.getCategorie());
 
         return "/books";
     }

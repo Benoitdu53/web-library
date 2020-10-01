@@ -10,7 +10,6 @@ public class Book {
     private Date pubDate;
     private int page;
     private String synopsis;
-    // TODO image à traiter
     private String cover;
     private Author author;
     private Categorie categorie;
