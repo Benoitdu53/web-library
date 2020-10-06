@@ -55,6 +55,8 @@ public class SessionFilter implements Filter {
                     request.getServletPath().startsWith("/books") ||
                     request.getServletPath().equals("/authentication") ||
                     request.getServletPath().equals("/users") ||
+                    request.getServletPath().startsWith("/css") ||
+                    request.getServletPath().startsWith("/img") ||
                     request.getServletPath().equals("/registration")){
                 chain.doFilter(request, response);
                 return;

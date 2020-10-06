@@ -1,6 +1,6 @@
 <head xmlns:th="http://www.w3.org/1999/xhtml">
     <header th:insert="header.html"/>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
+<!--    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">-->
 </head>
 
 <body xmlns:th="http://www.w3.org/1999/xhtml">
@@ -18,7 +18,7 @@
             </form>
         </div>
 
-        <div class="col-6 md-4 my -1">
+        <div class="col-6 md-4 my-1">
             <div id="searchSaisie">
                 <form id="formulairesaisie" th:action="@{/books/search}" method="post">
                     <label for="saisie">Saisir un auteur ou un titre de livre</label>
@@ -36,7 +36,7 @@
         <div th:each="books : ${books}" class="col-md-4 my-1">
             <a class="nav-link" th:href="@{'/book/'+${books.id}}"><p th:text="${books.title}"></p></a>
             <p th:href="@{'/book/'+${books.id}}">
-                <img th:src="@{|'/img/'+${books.cover}+'.jpeg'|}" class="card-img-top"/></p>
+                <img th:src="@{|/img/${books.cover}.jpeg|}" class="card-img-top"/></p>
             <!--            <img th:src="'/static/img/'+${books.cover}+'.jpeg'"  class="card-img-top" />-->
             <p th:text="${books.author.lastName}"></p>
             <p th:text="${books.author.firstName}"></p>

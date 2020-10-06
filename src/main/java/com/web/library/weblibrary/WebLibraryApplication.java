@@ -16,6 +16,7 @@ public class WebLibraryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebLibraryApplication.class, args);
+        System.out.println("Web-client start");
     }
 
 }
