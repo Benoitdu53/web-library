@@ -1,8 +1,9 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head xmlns:th="http://www.w3.org/1999/xhtml">
     <header th:insert="header.html"/>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
 </head>
-<body>
+
+<body xmlns:th="http://www.w3.org/1999/xhtml">
 <div class="container">
 
     <div id="row">
@@ -35,7 +36,7 @@
         <div th:each="books : ${books}" class="col-md-4 my-1">
             <a class="nav-link" th:href="@{'/book/'+${books.id}}"><p th:text="${books.title}"></p></a>
             <p th:href="@{'/book/'+${books.id}}">
-                <img th:src="@{'/img/'+${books.cover}+'.jpeg'}" class="card-img-top"/></p>
+                <img th:src="@{|'/img/'+${books.cover}+'.jpeg'|}" class="card-img-top"/></p>
             <!--            <img th:src="'/static/img/'+${books.cover}+'.jpeg'"  class="card-img-top" />-->
             <p th:text="${books.author.lastName}"></p>
             <p th:text="${books.author.firstName}"></p>
@@ -44,7 +45,6 @@
 
 </div>
 
-
 <script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
 </body>
