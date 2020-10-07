@@ -1,13 +1,33 @@
-/* Main image */
-#main-image{
-    background: url("img/bibliotheque.jpg");
-    background-size: cover;
+/* Général */
+
+body {
+    font-family: arial, sans-serif;
+    font-size: 15px;
+}
+ #navbarContent {
+    float: right;
 }
 
-body{
-    color: red;
+footer {
+    width: 100%;
+}
+
+/* Main image */
+#main-image{
+    background: url("/img/livre.jpg");
+    background-size: cover;
+    height: 129px;
 }
 
 h2{
-    font-size: 250px;
+    font-size: 50px;
+}
+
+.card {
+    border-bottom: black 1px dashed;
+}
+
+#card {
+    border: 1px black solid;
+    border-radius: 4px;
 }

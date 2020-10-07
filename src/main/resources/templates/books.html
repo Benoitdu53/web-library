@@ -1,6 +1,6 @@
 <head xmlns:th="http://www.w3.org/1999/xhtml">
     <header th:insert="header.html"/>
-<!--    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">-->
+    <!--    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">-->
 </head>
 
 <body xmlns:th="http://www.w3.org/1999/xhtml">
@@ -33,13 +33,16 @@
     <!--On affiche les livres avec le titre, l'auteur, la date de parution, le nombre et lieu d'exmplaire disponible
         ainsi que son image de couverture-->
     <div class="row">
-        <div th:each="books : ${books}" class="col-md-4 my-1">
-            <a class="nav-link" th:href="@{'/book/'+${books.id}}"><p th:text="${books.title}"></p></a>
-            <p th:href="@{'/book/'+${books.id}}">
-                <img th:src="@{|/img/${books.cover}.jpeg|}" class="card-img-top"/></p>
-            <!--            <img th:src="'/static/img/'+${books.cover}+'.jpeg'"  class="card-img-top" />-->
-            <p th:text="${books.author.lastName}"></p>
-            <p th:text="${books.author.firstName}"></p>
+            <div th:each="books : ${books}" class="col-md-4 my-1">
+                <div id="card">
+                <div class="card" th:href="@{'/book/'+${books.id}}">
+                    <img th:src="@{|/img/${books.cover}.jpeg|}" class="card-img-top" alt="Livre"/></div>
+                <div class="card-body"><a class="nav-link" th:href="@{'/book/'+${books.id}}"><p
+                        th:text="${books.title}"></p></a>
+                    <p class="card-text" th:text="${books.author.lastName}"></p>
+                    <p class="card-text" th:text="${books.author.firstName}"></p>
+                </div>
+            </div>
         </div>
     </div>
 
