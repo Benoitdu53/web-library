@@ -1,27 +1,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:insert="header.html"/>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
+    <header th:insert="header.html"/>
+
 </head>
 <body>
+<br>
 <div class="container">
     <!--On affiche les livres avec le titre, nombre de pages, l'auteur et l'image de couverture-->
     <div class="row">
-        <div th:each="book : ${book}" class="col-md-6">
-            <p th:text= "${book.title}"></p>
-            <p th:text= "${book.pubDate}"></p>
-            <p th:text= "${book.synopsis}"></p>
+
+        <div id="cardBook" class="col-6">
+            <div th:each="book : ${book}">
+                <p th:text="${book.title}"></p>
+                <p th:text="${book.pubDate}"></p>
+                <p th:text="${book.synopsis}"></p>
+            </div>
+        </div>
+
+        <div id="imgBook" class="col-6">
+            <img id="imageBook" th:src="@{|/img/${book.cover}.jpeg|}" class="card-img-top" alt="Livre"/>
         </div>
     </div>
 
+    <br>
+
     <div class="row">
-        <div th:each="copy : ${copy}" class="col-md-6">
-            Nombre d'exemplaire : <span th:text= "${copy.numberCopy}"> exemplaire(s)</span>,<br>
-            format : <span th:text= "${copy.format}"></span>,<br>
-            disponible dans la : <span th:text= "${copy.library.nom}"></span><br>
-        </div>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Nombre d'exemplaire</th>
+                <th scope="col">Format</th>
+                <th scope="col">Bibliothèque</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="copy : ${copy}" class="col-md-6">
+
+            </div>
+            <div th:each="copy : ${copy}" class="col-md-6">
+                <tr>
+                    <!--                    <th scope="row">1</th>-->
+                    <td><span th:text="${copy.numberCopy}"></span></td>
+                    <td><span th:text="${copy.format}"></span></td>
+                    <td><span th:text="${copy.library.nom}"></span></td>
+                </tr>
+            </div>
+            </tbody>
+
+        </table>
     </div>
 
 </div>
-
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
+<footer th:insert="footer.html"/>
 </body>
