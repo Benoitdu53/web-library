@@ -17,8 +17,8 @@
             </div>
         </div>
 
-        <div id="imgBook" class="col-6">
-            <img id="imageBook" th:src="@{|/img/${book.cover}.jpeg|}" class="card-img-top" alt="Livre"/>
+        <div id="imgBook" class="col-4">
+            <img id="imageBook" th:src="@{|/img/${book.cover}.jpeg|}" height="400" class="card-img-top" alt="Livre"/>
         </div>
     </div>
 
@@ -34,9 +34,6 @@
             </tr>
             </thead>
             <tbody>
-            <div th:each="copy : ${copy}" class="col-md-6">
-
-            </div>
             <div th:each="copy : ${copy}" class="col-md-6">
                 <tr>
                     <!--                    <th scope="row">1</th>-->

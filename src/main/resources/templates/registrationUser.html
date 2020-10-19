@@ -3,8 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <div th:insert="header.html"/>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
+    <header th:insert="header.html"/>
 </head>
 
 <body>
@@ -65,5 +64,6 @@
         </div>
     </div>
 </div>
+<footer th:insert="footer.html"/>
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
 </body>
-<div th:insert="footer.html"/>

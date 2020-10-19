@@ -49,6 +49,23 @@ footer {
     width: 100%;
 }
 
+#formulaireUser {
+    color: white;
+    background-color: #444444;
+    border-radius: 2px;
+}
+
+#formulaireUser input {
+    margin-left: 10px;
+    width: 80%;
+}
+
+#formulaireUser button {
+    border-radius: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 /* Main image */
 #main-image{
     background: url("/img/livrez1.jpg");
