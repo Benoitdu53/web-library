@@ -1,5 +1,46 @@
 /* Général */
 
+.titre {
+    font-size: 25px;
+    color: #1d2124;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    font-family: arial, sans-serif;
+    font-size: 45px;
+    color: #444;
+}
+
+header {
+    height: 120px;
+}
+
+header h1 {
+    float: left;
+    margin-top: 32px;
+}
+
+header nav ul {
+    padding-top: 35px;
+}
+
+header nav ul li{
+    float: left;
+    display: inline-block;
+}
+
+header nav ul li a{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
 body {
     font-family: arial, sans-serif;
     font-size: 15px;
@@ -14,9 +55,8 @@ footer {
 
 /* Main image */
 #main-image{
-    background: url("/img/livre.jpg");
+    background: url("/img/livres.jpg.jpg");
     background-size: cover;
-    height: 129px;
 }
 
 h2{
@@ -30,4 +70,28 @@ h2{
 #card {
     border: 1px black solid;
     border-radius: 4px;
+    background-color: darkgray;
+}
+
+/* Footer */
+
+footer {
+    height: 260px;
+    width: 100%;
+    background-color: #444;
+    padding-top: 30px;
+    margin-top: 650px;
+}
+
+footer h1 {
+    color: #fff;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.copyright {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 30px;
+    color: #777;
 }

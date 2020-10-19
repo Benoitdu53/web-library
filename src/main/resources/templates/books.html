@@ -1,5 +1,5 @@
 <head xmlns:th="http://www.w3.org/1999/xhtml">
-    <header th:insert="header.html"/>
+    <div th:insert="header.html"/>
     <!--    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">-->
 </head>
 
@@ -10,7 +10,7 @@
         <div class="col-6 md-4 my-1">
             <form id="formulaireCategorie" th:action="@{/books/categorie}" method="post">
                 <select id="categorie" name="categorie">
-                    <option value="">--</option>
+                    <option value="">Choisir une catégorie</option>
                     <option th:each="categorie : ${categorie}" th:value="${categorie.label}"
                             th:text="${categorie.label}"/>
                 </select>
@@ -33,8 +33,8 @@
     <!--On affiche les livres avec le titre, l'auteur, la date de parution, le nombre et lieu d'exmplaire disponible
         ainsi que son image de couverture-->
     <div class="row">
-            <div th:each="books : ${books}" class="col-md-4 my-1">
-                <div id="card">
+        <div th:each="books : ${books}" class="col-md-4 my-1">
+            <div id="card">
                 <div class="card" th:href="@{'/book/'+${books.id}}">
                     <img th:src="@{|/img/${books.cover}.jpeg|}" class="card-img-top" alt="Livre"/></div>
                 <div class="card-body"><a class="nav-link" th:href="@{'/book/'+${books.id}}"><p
@@ -50,4 +50,5 @@
 
 <script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
+<div th:insert="footer.html"/>
 </body>
