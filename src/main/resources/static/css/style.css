@@ -18,7 +18,7 @@ h1 {
 }
 
 header {
-    height: 120px;
+    /*height: 150px;*/
 }
 
 header h1 {
@@ -55,8 +55,9 @@ footer {
 
 /* Main image */
 #main-image{
-    background: url("/img/livres.jpg.jpg");
+    background: url("/img/livres.jpg");
     background-size: cover;
+    height: 150px;
 }
 
 h2{
@@ -94,4 +95,8 @@ footer h1 {
     font-weight: bold;
     padding-top: 30px;
     color: #777;
+}
+
+#formulaireCategorie {
+    margin-top: 5px;
 }

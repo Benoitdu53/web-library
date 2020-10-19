@@ -1,10 +1,8 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head xmlns:th="http://www.w3.org/1999/xhtml">
     <header th:insert="header.html"/>
-    <link rel="stylesheet" th:href="@{/css/style.css}" media="all">
 </head>
 
-<body>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
 <div class="container">
     <div id="formulaire">
         <div class="row justify-content-center">
@@ -29,5 +27,7 @@
         </div>
     </div>
 </div>
+<footer th:insert="footer.html"/>
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" media="all">
 </body>
-</html>
+
