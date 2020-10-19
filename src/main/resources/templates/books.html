@@ -6,7 +6,7 @@
 <div class="container">
 
     <div id="row">
-        <div class="col-6">
+        <div class="col-12">
             <form id="formulaireCategorie" th:action="@{/books/categorie}" method="post">
                 <select id="categorie" name="categorie">
                     <option value="">Choisir une catégorie</option>
@@ -17,7 +17,7 @@
             </form>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
             <div id="searchSaisie">
                 <form id="formulairesaisie" th:action="@{/books/search}" method="post">
                     <label for="saisie">Saisir un auteur ou un titre de livre</label>

@@ -55,6 +55,10 @@ footer {
     border-radius: 2px;
 }
 
+#formulaireUser label {
+    margin-left: 5px;
+}
+
 #formulaireUser input {
     margin-left: 10px;
     width: 80%;
@@ -64,6 +68,10 @@ footer {
     border-radius: 2px;
     margin-bottom: 5px;
     text-align: center;
+}
+
+button:hover {
+    background-color: aliceblue;
 }
 
 /* Main image */
