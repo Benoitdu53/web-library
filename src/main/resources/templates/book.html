@@ -7,12 +7,12 @@
 <br>
 <div class="container">
     <!--On affiche les livres avec le titre, nombre de pages, l'auteur et l'image de couverture-->
-    <div class="row">
+    <div class="row justify-content-center">
 
         <div id="cardBook" class="col-6">
             <div th:each="book : ${book}">
                 <p th:text="${book.title}"></p>
-                <p th:text="${book.pubDate}"></p>
+                Date de publication : <p th:text="${#dates.format(book.pubDate, 'dd-MM-YYYY')}"></p>
                 <p th:text="${book.synopsis}"></p>
             </div>
         </div>
@@ -24,27 +24,27 @@
 
     <br>
 
-    <div class="row">
-        <table class="table table-dark">
-            <thead>
-            <tr>
-                <th scope="col">Nombre d'exemplaire</th>
-                <th scope="col">Format</th>
-                <th scope="col">Bibliothèque</th>
-            </tr>
-            </thead>
-            <tbody>
-            <div th:each="copy : ${copy}" class="col-md-6">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <table class="table table-dark">
+                <thead>
                 <tr>
-                    <!--                    <th scope="row">1</th>-->
-                    <td><span th:text="${copy.numberCopy}"></span></td>
-                    <td><span th:text="${copy.format}"></span></td>
-                    <td><span th:text="${copy.library.nom}"></span></td>
+                    <th scope="col">Nombre d'exemplaire</th>
+                    <th scope="col">Format</th>
+                    <th scope="col">Bibliothèque</th>
                 </tr>
-            </div>
-            </tbody>
-
-        </table>
+                </thead>
+                <tbody>
+                <div th:each="copy : ${copy}">
+                    <tr>
+                        <td><span th:text="${copy.numberCopy}"></span></td>
+                        <td><span th:text="${copy.format}"></span></td>
+                        <td><span th:text="${copy.library.nom}"></span></td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </div>

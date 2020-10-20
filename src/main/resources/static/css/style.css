@@ -1,5 +1,10 @@
 /* Général */
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .titre {
     font-size: 25px;
     color: #1d2124;
@@ -43,10 +48,6 @@ body {
 }
  #navbarContent {
     float: right;
-}
-
-footer {
-    width: 100%;
 }
 
 #formulaireUser {
@@ -96,6 +97,10 @@ h2{
     border-bottom: black 1px dashed;
 }
 
+#imgBook {
+    border-radius: 2px;
+}
+
 #card {
     border: 1px black solid;
     border-radius: 4px;
@@ -113,7 +118,7 @@ footer {
     width: 100%;
     background-color: #444;
     padding-top: 30px;
-    margin-top: 650px;
+    margin-top: 1050px;
 }
 
 footer h1 {
@@ -131,4 +136,13 @@ footer h1 {
 
 #formulaireCategorie {
     margin-top: 5px;
+}
+
+@media only screen and (max-width: 1024px){
+    #main-image {
+        background-image: none;
+        height: 200px;
+        text-align: center;
+        background-color: darkgray;
+    }
 }

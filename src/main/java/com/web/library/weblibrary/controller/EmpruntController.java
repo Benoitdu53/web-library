@@ -1,6 +1,5 @@
 package com.web.library.weblibrary.controller;
 
-import com.web.library.weblibrary.beans.Customer;
 import com.web.library.weblibrary.beans.Emprunt;
 import com.web.library.weblibrary.proxies.CopyProxy;
 import com.web.library.weblibrary.proxies.EmpruntProxy;
@@ -10,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -45,6 +46,12 @@ public class EmpruntController {
         return "emprunts";
     }
 
+    /**
+     * Prolonge le prêt
+     * @param httpSession
+     * @param idEmprunt
+     * @return
+     */
     @RequestMapping(value = "/emprunt/extended/{idEmprunt}", method = RequestMethod.GET)
     public String extendEmprunt(HttpSession httpSession,
                                 @PathVariable("idEmprunt") Long idEmprunt) {
@@ -52,5 +59,15 @@ public class EmpruntController {
         empruntProxy.ExtendLoan(idEmprunt);
 
         return "redirect:/books";
+    }
+
+    /**
+     * Méthode qui formatte la date de retour prévue
+     * @param date
+     * @return
+     */
+    private String formatDateToMail(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+        return sdf.format(date);
     }
 }

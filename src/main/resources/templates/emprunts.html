@@ -24,8 +24,8 @@
                 <tr>
                     <!--/*@thymesVar id="book" type="com.web.library.weblibrary.beans.Emprunt"*/-->
                     <td th:text="${emprunt.copy.book.title}"></td>
-                    <td th:text="${emprunt.empruntDate}"></td>
-                    <td th:text="${emprunt.returnDate}"></td>
+                    <td th:text="${#dates.format(emprunt.empruntDate, 'dd-MM-YYYY')}"></td>
+                    <td th:text="${#dates.format(emprunt.returnDate, 'dd-MM-YYYY')}"></td>
                     <td th:text="${emprunt.copy.library.nom}"></td>
                     <td th:text="${emprunt.extended == false ? 'Non' : 'Oui'}"></td>
                     <!--                        Prolongation possible si isExtended est false-->
