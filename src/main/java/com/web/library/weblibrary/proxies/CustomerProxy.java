@@ -2,6 +2,7 @@ package com.web.library.weblibrary.proxies;
 
 import com.web.library.weblibrary.beans.AuthenticationCustomer;
 import com.web.library.weblibrary.beans.Customer;
+import feign.FeignException;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public interface CustomerProxy {
     Customer createCustomer(@ModelAttribute("user") Customer customer);
 
     @PostMapping(value = "/authenticate")
-    ResponseEntity<?> validationAuthentication(@ModelAttribute("authentication") AuthenticationCustomer authenticationCustomer);
+    ResponseEntity<?> validationAuthentication(@ModelAttribute("authentication") AuthenticationCustomer authenticationCustomer) throws FeignException.Unauthorized;
 
     @GetMapping(value = "/customerInfo")
     Customer getInfoCustomer(@RequestHeader(name = "Authorization") String headerAuthorization);

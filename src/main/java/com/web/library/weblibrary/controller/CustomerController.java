@@ -3,6 +3,7 @@ package com.web.library.weblibrary.controller;
 import com.web.library.weblibrary.beans.AuthenticationCustomer;
 import com.web.library.weblibrary.beans.Customer;
 import com.web.library.weblibrary.proxies.CustomerProxy;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -88,19 +89,27 @@ public class CustomerController {
     @RequestMapping(value = "/authentication", method = RequestMethod.POST)
     public String authenticationCustomer(@ModelAttribute("authenticationCustomer")AuthenticationCustomer authenticationCustomer,
                                          HttpSession httpSession,
-                                         HttpServletResponse response){
+                                         HttpServletResponse response,
+                                         Model model){
+        try {
+            ResponseEntity<?> responseEntity = customerProxy.validationAuthentication(authenticationCustomer);
 
-        ResponseEntity<?> responseEntity = customerProxy.validationAuthentication(authenticationCustomer);
+            Cookie cookie = new Cookie("Token", ((Map<String, String>) responseEntity.getBody()).get("token"));
+            cookie.setHttpOnly(true);
+            cookie.setMaxAge(3600);
+            response.addCookie(cookie);
 
-        Cookie cookie = new Cookie("Token", ((Map<String, String>) responseEntity.getBody()).get("token"));
-        cookie.setHttpOnly(true);
-        cookie.setMaxAge(3600);
-        response.addCookie(cookie);
+            Customer customer = customerProxy.getCustomerByEmail(authenticationCustomer.getUsername());
+            httpSession.setAttribute("customer", customer);
 
-        Customer customer = customerProxy.getCustomerByEmail(authenticationCustomer.getUsername());
-        httpSession.setAttribute("customer", customer);
+            return "redirect:/books";
+        } catch (FeignException.Unauthorized unauthorized){
 
-        return "redirect:/books";
+            model.addAttribute("erreur", "L'utilisateur ou le mot de passe n'existe pas");
+
+            return "authentication";
+        }
+
     }
 
     /**
